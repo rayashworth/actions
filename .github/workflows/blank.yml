@@ -37,4 +37,5 @@ jobs:
           pwd
           ls -la
           df
+          sh bin/hello.sh
           
