@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: build role table
 
 # Controls when the workflow will run
 on:
@@ -38,4 +38,8 @@ jobs:
           ls -la
           df
           sh bin/hello.sh
+          
+      - name: Run build table script
+          cd script/common; ./builddoc.sh
+    
           
