@@ -50,7 +50,8 @@ jobs:
           ls ../../ansible/roles/role_2
           cat /tmp/roletable.html
           cp /tmp/roletable.html ../../docs/_includes
-          git commit -a
+          git add -A
+          git commit -a -m "update role table"
           git merge table-update
           git branch -D table-update
           git push https://github.com/rayashworth/actions main
