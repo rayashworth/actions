@@ -53,9 +53,10 @@ jobs:
           git add -A
           git commit -a -m "update role table"
           git merge table-update
-          git branch -D table-update
           git push https://github.com/rayashworth/actions main
-
+          git checkout main
+          git branch -D table-update
+          
 
           
     
