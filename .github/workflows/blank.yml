@@ -41,10 +41,18 @@ jobs:
           
       - name: Run build table script
         run: |
-          echo build /tmp/roletable.html
+          echo building /tmp/roletable.html...
+          git checkout -b table-update
           cd scripts/common; ./builddoc.sh
           ls ../../ansible/roles/role_1
           ls ../../ansible/roles/role_2
           cat /tmp/roletable.html
+          cp /tmp/roletable.html ../../docs/_includes
+          git commit -a
+          git merge table-update
+          git branch -D table-update
+          git push https://github.com/rayashworth/actions main
+
+
           
     
