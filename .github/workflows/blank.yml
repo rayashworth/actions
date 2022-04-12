@@ -41,6 +41,8 @@ jobs:
           
       - name: Run build table script
         run: |
+          git config --global user.email "ashworth@us.ibm.com"
+          git config --global user.name "Ray Ashworth"
           echo building /tmp/roletable.html...
           git checkout -b table-update
           cd scripts/common; ./builddoc.sh
