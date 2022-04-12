@@ -52,9 +52,9 @@ jobs:
           cp /tmp/roletable.html ../../docs/_includes
           git add -A
           git commit -a -m "update role table"
-          git merge table-update
-          git push origin table-update
           git checkout main
+          git merge table-update
+          git push origin main
           git branch -D table-update
           
 
