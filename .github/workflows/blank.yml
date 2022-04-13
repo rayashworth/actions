@@ -49,7 +49,7 @@ jobs:
           ls ../../ansible/roles/role_1
           ls ../../ansible/roles/role_2
           cat /tmp/roletable.html
-          cp /tmp/roletable.html ../../docs/_includes
+          cp /tmp/roletable.html ../../docs/_includes/roletable.html
           git add -A
           git commit -a -m "update role table"
           git checkout main
