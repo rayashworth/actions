@@ -26,6 +26,15 @@ function getdescription () {
 
 }
 
+function build_playbook_links () {
+  local string=$1
+
+  echo "$string"
+
+}
+
+baseRoleURL="https://github.com/IBM/community-automation/tree/master/ansible"
+
 roletable="/tmp/roletable.html"
 rolenamesfile="/tmp/rolenamefile"
 ls ../../ansible/roles | xargs -I {}  basename {} > $rolenamesfile
@@ -33,12 +42,17 @@ ls ../../ansible/roles | xargs -I {}  basename {} > $rolenamesfile
 echo -e "<html><table border=1>" > $roletable
 echo -e "<th>Role</th><th>Example Plays</th><th>Description</th>" >> $roletable
 while IFS= read -r line || [[ -n "$line" ]]; do
-  echo -e  "<tr><td>$line</td>" >> $roletable
+  # add role name
+  echo -e  "<tr><td><a href=$baseRoleURL/roles/$line>$line</a></td>" >> $roletable
 
+  # add playbooks
   echo -e "<td>" >> $roletable
+
+  # capture playbook details
   grep -E -rl "$line" ../../ansible | grep -vi -E "jenkins|roles|readme|inventory|example" | awk '{printf " "$1 "<br>"}' >> $roletable || true
   echo -e "</td><td>" >> $roletable
 
+  # add description
   getdescription "$line" >> $roletable || true
 
   echo -e "</td></tr>" >> $roletable
