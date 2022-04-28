@@ -5,8 +5,8 @@ name: build role table
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
+  #push:
+  #  branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -41,8 +41,8 @@ jobs:
           
       - name: Run build table script
         run: |
-          git config --global user.email "ashworth@us.ibm.com"
-          git config --global user.name "Ray Ashworth"
+          git config --global user.email "build@us.ibm.com"
+          git config --global user.name "Html Table"
           echo building /tmp/roletable.html...
           git checkout -b table-update
           cd scripts/common; ./builddoc.sh
@@ -57,6 +57,3 @@ jobs:
           git push origin main
           git branch -D table-update
           
-
-          
-    
